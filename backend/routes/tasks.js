@@ -1,37 +1,37 @@
 const express = require("express");
 const router = express.Router();
-const Book = require("../models/Book");
+const Task = require("../models/Task");
 
-// GET all books
+// GET all tasks
 router.get("/", async (req, res) => {
   try {
-    const books = await Book.find();
-    res.json(books);
+    const tasks = await Task.find();
+    res.json(users);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
-// POST new book
+// POST new tasks
 router.post("/", async (req, res) => {
   try {
-    const book = new Book({
+    const tasks = new Task({
       title: req.body.title,
       author: req.body.author,
     });
 
-    const savedBook = await book.save();
-    res.status(201).json(savedBook);
+    const savedTask = await user.save();
+    res.status(201).json(savedTask);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
 
-// DELETE book
+// DELETE task
 router.delete("/:id", async (req, res) => {
   try {
-    await Book.findByIdAndDelete(req.params.id);
-    res.json({ message: "Book deleted" });
+    await Task.findByIdAndDelete(req.params.id);
+    res.json({ message: "Task deleted" });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
