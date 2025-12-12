@@ -2,7 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const booksRouter = require("./routes/books");
+const userRouter = require("./routes/users");
+const journalRouter = require("./routes/journals");
 
 const app = express();
 
@@ -17,7 +18,8 @@ mongoose
   .catch((err) => console.error("MongoDB connection error:", err));
 
 // Routes
-app.use("/books", booksRouter);
+app.use("/api/users", userRouter);
+app.use("/api/journals", journalRouter);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
