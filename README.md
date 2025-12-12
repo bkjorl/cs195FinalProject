@@ -1,10 +1,10 @@
-# 📘 Daily Journal
+# Daily Journal
 
 A simple and streamlined app to write reflections
 
 ---
 
-## 🚀 Overview
+## Overview
 
 Briefly describe:
 
@@ -202,7 +202,9 @@ Include quick timestamps if you want extra professionalism:
 
 ### **1. What was the hardest part of this project?**
 
-Write 3–5 sentences.
+All of this project was really difficult for me. I would say the frontend is definitely where I struggled the most as I had trouble getting things to work
+properly. I think this was in part due to me being on a time crunch and never having a react app that we deployed with multiple pages. It took me quite a bit of time to 
+sort out how to get the navigation working. 
 
 ### **2. What are you most proud of?**
 
@@ -210,7 +212,8 @@ Could be a feature, a UI improvement, debugging work, or personal growth.
 
 ### **3. What would you do differently next time?**
 
-Think in terms of planning, scoping, or tech choices.
+I think I would make sure I start with a more achievable plan. This was something I worried about, but I did not realize how bad it was even with the planning until
+finals week which did not give me a lot of time to fix the scope issues. 
 
 ### **4. How did you incorporate feedback from the 12/5 check-in gallery?**
 
