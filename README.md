@@ -229,10 +229,10 @@ Once I realized this my next steps were reorganizing my backend and getting to w
 > Include a brief note on tools used (per academic integrity guidelines):
 
 * Used Claude to help debug thoughout the project (also noted in the files)
-* debugging delete journal entry route, api, and in Journal.jsx
-* debugging scrollbar in Entrylist.jsx
-* debugging Journal.jsx loading, error handling, etc.
+* debugging delete journal entry route, api, and in Journal.jsx: I gained a strong understanding of how to debug errors by systematically going from the front end to the backend
+* debugging scrollbar in Entrylist.jsx: I learned how to include scrollbars and about overflow of containers
+* debugging Journal.jsx loading, error handling, etc.: It really helped my understanding of usestates and cleanup as well as how to include errors to have the best chance of helping you debug codde
 * debugging JournalEntry.jsx entry text
-* debugging LoginSignup
-* debugging AuthContext and how that flowed as a whole
-* understanding and debugging current date variable 
+* debugging LoginSignup: While the tutorial I watched helped me build the login and signup page, being able to ask questions to claude really helped me understand some of the whys to the process
+* debugging AuthContext and how that flowed as a whole: While the tutorial I watched helped me build the login and signup page, being able to ask questions to claude really helped me understand some of the whys to the process
+* understanding and debugging current date variable: this was something I had trouble with the timestamps for and went and looked if there was an alternative way, multiple sources I read suggested this and haveing claude able to help me understand exactly what it meant was helpful
