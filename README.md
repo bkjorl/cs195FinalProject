@@ -230,10 +230,10 @@ Once I realized this my next steps were reorganizing my backend and getting to w
 > Include a brief note on tools used (per academic integrity guidelines):
 
 * Used Claude to help debug thoughout the project (also noted in the files)
-** debugging delete journal entry route, api, and in Journal.jsx
-** debugging scrollbar in Entrylist.jsx
-** debugging Journal.jsx loading, error handling, etc.
-** debugging JournalEntry.jsx entry text
-** debugging LoginSignup
-** debugging AuthContext and how that flowed as a whole
-** understanding and debugging current date variable 
+* debugging delete journal entry route, api, and in Journal.jsx
+* debugging scrollbar in Entrylist.jsx
+* debugging Journal.jsx loading, error handling, etc.
+* debugging JournalEntry.jsx entry text
+* debugging LoginSignup
+* debugging AuthContext and how that flowed as a whole
+* understanding and debugging current date variable 
