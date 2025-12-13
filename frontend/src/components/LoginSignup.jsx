@@ -64,7 +64,7 @@ function LoginSignup() {
     return (
         <div className='container'>
             <div className='header'>
-                <h2>Welcome</h2>
+                <h2>Daily Journal</h2>
                 <div className='underline'></div>
             </div>
             {error && <div style={{ color: 'red', background: 'white', padding: '10px', borderRadius: '5px', marginBottom: '10px', maxWidth: '450px' }}>{error}</div>}

@@ -1,27 +1,32 @@
 import { useState, useEffect } from 'react';
 import '../App.css';
 import EntryList from './EntryList';
-import { getJournal, createEntry, updateEntry, deleteEntry } from '../api/journals';
+import { getJournal, createEntry, deleteEntry } from '../api/journals';
+import { useAuth } from '../contexts/AuthContext';
 
 function App() {
-  // State management
+  const { user } = useAuth();
   const [entries, setEntries] = useState([]);
   const [activeEntry, setActiveEntry] = useState(null);
   const [newEntryText, setNewEntryText] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Load entries from database on mount
+  //loading entries - debugged with claude
   useEffect(() => {
-    loadEntries();
-  }, []);
+    if (user?._id) {
+      loadEntries();
+    } else {
+    setLoading(false);
+  }
+  }, [user]);
 
   //Fetch all entries from backend
   const loadEntries = async () => {
     try {
       setLoading(true);
       setError(null);
-      const data = await getJournal();
+      const data = await getJournal(user._id);
       setEntries(data);
     } catch (err) {
       console.error('Error loading entries:', err);
@@ -37,13 +42,13 @@ function App() {
     if (!newEntryText.trim()) return;
 
     try {
-      // 1. Save to database via backend
-      const newEntry = await createEntry({ entry: newEntryText });
-      
-      // 2. Update React state (add to beginning of list)
+      const newEntry = await createEntry({ 
+        userId: user._id,  // Include userId
+        entry: newEntryText       
+      });
+
       setEntries([newEntry, ...entries]);
       
-      // 3. Clear input
       setNewEntryText('');
     } catch (err) {
       console.error('Error creating entry:', err);
@@ -51,16 +56,13 @@ function App() {
     }
   };
 
-  // Delete a entry
+  // Delete an entry - debugged with claude
   const handleDeleteEntry = async (entryId) => {
     try {
-      // 1. Delete from database
-      await deleteEntry(entryId);
+      await deleteEntry(entryId, user._id);
       
-      // 2. Remove from React state
       setEntries(entries.filter(e => e._id !== entryId));
       
-      // 3. Clear active entry if it was deleted
       if (activeEntry?._id === entryId) {
         setActiveEntry(null);
       }
@@ -70,7 +72,6 @@ function App() {
     }
   };
 
-  // Select an entry
   const handleSelectEntry = (entry) => {
     setActiveEntry(entry);
   };

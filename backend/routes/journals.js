@@ -3,29 +3,11 @@ const router = express.Router();
 const User = require("../models/User");
 const Journal = require("../models/Journal");
 
-// GET all journal entries
-router.get("/", async (req, res) => {
+// GET all journal entries for a specific user
+router.get("/user/:userId", async (req, res) => {
   try {
-    const journal = await Journal.find();
+    const journal = await Journal.find({userId: req.params.userId}).sort({ createdAt: -1 });
     res.json(journal);
-  } catch (error) {
-    res.status(500).json({ message: "Server Error" });
-  }
-});
-
-// GET specific journal entry
-router.get("/:id", async (req, res) => {
-  try {
-    const journal = await Journal.findById(req.params.id);
-
-    if (!journal) {
-      return res.status(404).json({
-        message: "Journal not found",
-      });
-    }
-
-    res.json(journal);
-
   } catch (error) {
     res.status(500).json({ message: "Server Error" });
   }
@@ -35,6 +17,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const newJournal = new Journal({
+      userId: req.body.userId,
       entry: req.body.entry,
     });
 
@@ -45,45 +28,29 @@ router.post("/", async (req, res) => {
   }
 });
 
-// DELETE journal entries
+// DELETE journal entries - debugged with claude
 router.delete("/:id", async (req, res) => {
   try {
-    const deletedJournal = await Journal.findByIdAndDelete(req.params.id);
+    const { userId } = req.body;
+
+    if (!userId) {
+      return res.status(400).json({ message: "User ID required" });
+    }
+
+    const deletedJournal = await Journal.findOneAndDelete({
+      _id: req.params.id,
+      userId: userId,
+    });
 
     if (!deletedJournal) {
       return res.status(404).json({
-        message: "Journal not found",
+        message: "Entry not found",
       });
     }
 
     res.json(deletedJournal);
   } catch (error) {
     res.status(500).json({ message: "Server error" });
-  }
-});
-
-//put new journal entries
-router.put("/:id", async (req, res) => {
-  try {
-    const updatedJournal = await Journal.findByIdAndUpdate(
-      req.params.id, 
-      req.body, 
-      {
-        new: true, 
-        runValidators: true, 
-      }
-    );
-
-    if (!updatedJournal) {
-      return res.status(404).json({
-        message: "Journal not found",
-      });
-    }
-
-    res.json(updatedJournal);
-
-  } catch (error) {
-    res.status(400).json({ message: "Validation Error" });
   }
 });
 

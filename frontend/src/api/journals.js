@@ -1,14 +1,8 @@
 const API_URL = 'http://localhost:3000';
 
 //Fetch all journal entries
-export const getJournal = async () => {
-  const response = await fetch(`${API_URL}/api/journals`);
-  if (!response.ok) throw new Error('Failed to fetch entry');
-  return response.json();
-};
-
-export const getEntry = async (id) => {
-  const response = await fetch(`${API_URL}/api/journals/${id}`);
+export const getJournal = async (userId) => {
+  const response = await fetch(`${API_URL}/api/journals/user/${userId}`);
   if (!response.ok) throw new Error('Failed to fetch entry');
   return response.json();
 };
@@ -24,22 +18,14 @@ export const createEntry = async (entryData) => {
   return response.json();
 };
 
-//update a journal entry
-export const updateEntry = async (id, updates) => {
-  const response = await fetch(`${API_URL}/api/journals/${id}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(updates),
-  });
-  if (!response.ok) throw new Error('Failed to update entry');
-  return response.json();
-};
-
 //delete a journal entry
-export const deleteEntry = async (id) => {
+export const deleteEntry = async (id, userId) => {
   const response = await fetch(`${API_URL}/api/journals/${id}`, {
     method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ userId }),
   });
+
   if (!response.ok) throw new Error('Failed to delete entry');
   return response.json();
 };
