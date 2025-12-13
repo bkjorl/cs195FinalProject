@@ -15,13 +15,16 @@ router.get("/", async (req, res) => {
 // POST new users
 router.post("/", async (req, res) => {
   try {
-    const users = new User({
-      title: req.body.title,
-      author: req.body.author,
+    const user = new User({
+      userFirstName: req.body.userFirstName,
+      userLastName: req.body.userLastName,
+      userEmail: req.body.userEmail,
+      userUName: req.body.userUName,
+      userPassword: req.body.userPassword,
     });
 
     const savedUser = await user.save();
-    res.status(201).json(saveduser);
+    res.status(201).json(savedUser);
   } catch (err) {
     res.status(400).json({ message: err.message });
   }

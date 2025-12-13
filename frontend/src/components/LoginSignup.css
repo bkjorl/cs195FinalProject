@@ -1,5 +1,5 @@
 /*used tutorial https://www.youtube.com/watch?v=8QgQKRcAUvM" to help create*/
-{/*used claude to help debug css issues: could not get containers to center properly*/}
+/*used claude to help debug css issues: could not get containers to center properly*/
 .container {
     display: flex;
     flex-direction: column;

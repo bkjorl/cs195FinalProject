@@ -1,34 +1,94 @@
 {/*used tutorial https://www.youtube.com/watch?v=8QgQKRcAUvM" to help create*/}
-{/*used claude to help debug css issues and connection to backend issues*/}
+{/*used claude to help debug connection to backend issues: issues with POST route, error handling, and saving userId*/}
 import React from 'react';
 import './LoginSignup.css';
+import { createUser, getUser } from '../api/users';
+import { useAuth } from '../contexts/AuthContext';
 
-function LoginSignup () {
-    const [action, setAction] = React.useState('Sign Up');
+function LoginSignup() {
+    const { login } = useAuth();
+    const [firstName, setFirstName] = React.useState('');
+    const [lastName, setLastName] = React.useState('');
+    const [username, setUsername] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [password, setPassword] = React.useState('');
+    const [error, setError] = React.useState('');
 
+    const handleSignUp = async () => {
+        setError('');
+        
+        if (!firstName.trim() || !lastName.trim() || !username.trim() || !email.trim() || !password.trim()) {
+            setError('All fields are required');
+            return;
+        }
+
+        try {
+            const userData = {
+                userFirstName: firstName,
+                userLastName: lastName,
+                userUName: username,
+                userEmail: email,
+                userPassword: password
+            };
+            
+            const newUser = await createUser(userData);
+            login(newUser);
+        } catch (err) {
+            console.error('Sign up error:', err);
+            setError('Failed to create user. Make sure your backend is running on port 3000.');
+        }
+    };
+
+    const handleLogIn = async () => {
+        setError('');
+        
+        if (!email.trim() || !password.trim()) {
+            setError('Email and password are required');
+            return;
+        }
+
+        try {
+            const users = await getUser();
+            const user = users.find(u => u.userEmail === email && u.userPassword === password);
+            if (user) {
+                login(user);
+            } else {
+                setError('Invalid email or password');
+            }
+        } catch (err) {
+            console.error('Log in error:', err);
+            setError('Failed to log in. Make sure your backend is running on port 3000.');
+        }
+    };
     
     return (
         <div className='container'>
             <div className='header'>
-                <h2>{action}</h2>
+                <h2>Welcome</h2>
                 <div className='underline'></div>
             </div>
+            {error && <div style={{ color: 'red', background: 'white', padding: '10px', borderRadius: '5px', marginBottom: '10px', maxWidth: '450px' }}>{error}</div>}
             <div className='inputs'>
                 <div className='input'>
-                    <input type="text" placeholder='Username' />
+                    <input type="text" placeholder='First Name' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                 </div>
                 <div className='input'>
-                    <input type="email" placeholder='Email' /> 
+                    <input type="text" placeholder='Last Name' value={lastName} onChange={(e) => setLastName(e.target.value)} />
                 </div>
                 <div className='input'>
-                    <input type="password" placeholder='Password' />    
+                    <input type="text" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} />
+                </div>
+                <div className='input'>
+                    <input type="email" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} /> 
+                </div>
+                <div className='input'>
+                    <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />    
                 </div>
             </div>
             <div className="submit-container">
-                <button className='submit-button' onClick={() => setAction('Sign Up')}>Sign Up</button>
-                <button className='submit-button' onClick={() => setAction('Log In')}>Log In</button>
+                <button className='submit-button' onClick={handleSignUp}>Sign Up</button>
+                <button className='submit-button' onClick={handleLogIn}>Log In</button>
             </div>
-
         </div>
     );
 }
