@@ -15,8 +15,8 @@ through the hassle of writing down all your thoughts and is meant to get people 
 
 | Type                         | Link                                                           |
 | ---------------------------- | -------------------------------------------------------------- |
-| **Frontend (Deployed Site)** | [[https://your-frontend-url.com](https://heartfelt-truffle-c8e0a2.netlify.app/)]([https://your-frontend-url.com](https://heartfelt-truffle-c8e0a2.netlify.app/)) |
-| **Backend (API Base URL)**   | [[https://your-backend-url.com](https://cs195finalprojectbackend.onrender.com/)]([https://your-backend-url.com](https://cs195finalprojectbackend.onrender.com/))   |
+| **Frontend (Deployed Site)** | [[https://your-frontend-url.com](https://heartfelt-truffle-c8e0a2.netlify.app/)] |
+| **Backend (API Base URL)**   | [[https://your-backend-url.com](https://cs195finalprojectbackend.onrender.com/)] |
 
 > Test these in an incognito window before submission.
 
@@ -190,7 +190,7 @@ Document where/how you deployed:
 ---
 
 ## 🎥 Video Walkthrough
-[[[https://your-backend-url.com]([https://drive.google.com/file/d/1qpOp-327KjyVHs4igeMVV3E_lRq2KDTd/view?usp=sharing](https://drive.google.com/file/d/1qpOp-327KjyVHs4igeMVV3E_lRq2KDTd/view?usp=sharing))]
+[https://drive.google.com/file/d/1qpOp-327KjyVHs4igeMVV3E_lRq2KDTd/view?usp=sharing](https://drive.google.com/file/d/1qpOp-327KjyVHs4igeMVV3E_lRq2KDTd/view?usp=sharing)]
 ---
 
 # 🧠 Reflection
