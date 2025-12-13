@@ -1,15 +1,13 @@
 # Daily Journal
 
-A simple and streamlined app to write reflections
+A simple and streamlined app to write reflections about your day
 
 ---
 
 ## Overview
 
-Briefly describe:
-
 Daily journal is meant to help people keep their thoughts organized. It is an app that alllows you to input journal entries and track them over time. It is meant to be an easier way to journal than going
-through the hassle of writing down all your thoughts and is meant to get people journaling more. 
+through the hassle of writing down all your thoughts and is meant to get people journaling more. I also wanted to make it so you an add as many entries as you wanted for a day so that there was not pressure to get thr first entry "right".
 
 ---
 
@@ -37,7 +35,7 @@ List **3–6 key features**, ideally with short bullets:
 
 ### **Advanced Feature**
 
-I implemented a login feature to allow users to create an account and save their journal entires without worring about other people seeing them.
+I implemented a login feature to allow users to create an account and save their journal entires without worring about other people seeing them. This took me a lot of time and I spent used the youtube tutorials [https://www.youtube.com/watch?v=2-6K-TMA-nw](https://www.youtube.com/watch?v=2-6K-TMA-nw) and [https://www.youtube.com/watch?v=8QgQKRcAUvM](https://www.youtube.com/watch?v=8QgQKRcAUvM) to help me create and understand how to create and store log in information.
 
 ---
 
@@ -55,14 +53,30 @@ Describe how the pieces fit together.
 ```
 /frontend
   /src
+    /api
+      journal.js
+      users.js
     /components
-    /pages
+      EntryList.jsx
+      Journal.jsx
+      JournalEntry.jsx
+      LoginSignup.jsx
+      LoginSignup.css
+    /contexts
+      AuthContext.jsx
+    App.css
     App.jsx
+    index.css
     main.jsx
+    index.html
 
 /backend
   /models
+    Journal.js
+    User.js
   /routes
+    journals.js
+    users.js
   server.js
 ```
 
@@ -92,8 +106,6 @@ Include a `.env.example` file in both repos.
 ```
 MONGO_URI=your_mongodb_url
 PORT=4000
-JWT_SECRET=your_secret_if_using_auth
-API_KEY=if_using_external_apis
 ```
 
 **Frontend `.env.example`:**
@@ -134,34 +146,27 @@ npm start
 ---
 
 ## 🛠 API Documentation
+### **GET /api/journals/user/:userId**
 
-Document the **main 3–5 routes**:
+Returns journal entries for a specific user. This is what is used to create the entrylist.
 
-### **GET /api/resource**
+### **POST /api/journal*
 
-Returns all resources.
-
-### **POST /api/resource**
-
-Creates a new resource.
+Creates a new journal entry.
 Body example:
 
 ```json
 {
-  "name": "Example",
-  "description": "Text here"
+  "userId": "userId object",
+  "entry": "Journal entry here"
 }
 ```
 
-### **PATCH /api/resource/:id**
+### **DELETE /api/journal/:id**
 
-Updates a resource.
+Deletes journal entries.
 
-### **DELETE /api/resource/:id**
-
-Deletes a resource.
-
-> Add additional routes if needed (auth, file uploads, WebSockets, etc.).
+> authentication is used through userId for getting journal entries and is also included in posting entries.
 
 ---
 
@@ -187,13 +192,6 @@ Document where/how you deployed:
 **Link to Loom/YouTube:**
 [https://your-video-link.com](https://your-video-link.com)
 
-Include quick timestamps if you want extra professionalism:
-
-* **0:00–0:30** Overview
-* **0:30–1:30** Core features demo
-* **1:30–2:30** Advanced feature
-* **2:30–3:00** Technical challenge solved
-
 ---
 
 # 🧠 Reflection
@@ -208,7 +206,7 @@ sort out how to get the navigation working.
 
 ### **2. What are you most proud of?**
 
-Could be a feature, a UI improvement, debugging work, or personal growth.
+I am proud of how much I learned on this project. I spent a lot of time working on getting the login stuff working and it was very difficult, but it feels really good that I was able to figure it out. 
 
 ### **3. What would you do differently next time?**
 
@@ -231,8 +229,11 @@ Once I realized this my next steps were reorganizing my backend and getting to w
 
 > Include a brief note on tools used (per academic integrity guidelines):
 
-Examples:
-
-* “Used Claude to help troubleshoot a issue I had on PUT function for journal entries not working originally”
-* “Used Claude for help writing documentation.”
-* “Used VSCode Copilot for autocomplete suggestions.”
+* Used Claude to help debug thoughout the project (also noted in the files)
+** debugging delete journal entry route, api, and in Journal.jsx
+** debugging scrollbar in Entrylist.jsx
+** debugging Journal.jsx loading, error handling, etc.
+** debugging JournalEntry.jsx entry text
+** debugging LoginSignup
+** debugging AuthContext and how that flowed as a whole
+** understanding and debugging current date variable 
