@@ -1,3 +1,5 @@
+{/*used tutorials https://www.youtube.com/watch?v=8QgQKRcAUvM and https://www.youtube.com/watch?v=2-6K-TMA-nw to help create this file*/}
+{/*used claude to help debug format and connection to authContext*/}
 import './App.css';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import Journal from './components/Journal.jsx';

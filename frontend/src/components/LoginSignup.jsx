@@ -1,4 +1,4 @@
-{/*used tutorial https://www.youtube.com/watch?v=8QgQKRcAUvM" to help create*/}
+{/*used tutorial https://www.youtube.com/watch?v=8QgQKRcAUvM to help create*/}
 {/*used claude to help debug connection to backend issues: issues with POST route, error handling, and saving userId*/}
 import React from 'react';
 import './LoginSignup.css';
@@ -7,8 +7,6 @@ import { useAuth } from '../contexts/AuthContext';
 
 function LoginSignup() {
     const { login } = useAuth();
-    const [firstName, setFirstName] = React.useState('');
-    const [lastName, setLastName] = React.useState('');
     const [username, setUsername] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -17,15 +15,13 @@ function LoginSignup() {
     const handleSignUp = async () => {
         setError('');
         
-        if (!firstName.trim() || !lastName.trim() || !username.trim() || !email.trim() || !password.trim()) {
+        if (!username.trim() || !email.trim() || !password.trim()) {
             setError('All fields are required');
             return;
         }
 
         try {
             const userData = {
-                userFirstName: firstName,
-                userLastName: lastName,
                 userUName: username,
                 userEmail: email,
                 userPassword: password
@@ -69,12 +65,6 @@ function LoginSignup() {
             </div>
             {error && <div style={{ color: 'red', background: 'white', padding: '10px', borderRadius: '5px', marginBottom: '10px', maxWidth: '450px' }}>{error}</div>}
             <div className='inputs'>
-                <div className='input'>
-                    <input type="text" placeholder='First Name' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-                </div>
-                <div className='input'>
-                    <input type="text" placeholder='Last Name' value={lastName} onChange={(e) => setLastName(e.target.value)} />
-                </div>
                 <div className='input'>
                     <input type="text" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} />
                 </div>

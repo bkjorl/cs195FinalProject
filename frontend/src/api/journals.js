@@ -18,7 +18,7 @@ export const createEntry = async (entryData) => {
   return response.json();
 };
 
-//delete a journal entry
+//delete a journal entry - debugged with claude
 export const deleteEntry = async (id, userId) => {
   const response = await fetch(`${API_URL}/api/journals/${id}`, {
     method: 'DELETE',
