@@ -15,8 +15,8 @@ through the hassle of writing down all your thoughts and is meant to get people 
 
 | Type                         | Link                                                           |
 | ---------------------------- | -------------------------------------------------------------- |
-| **Frontend (Deployed Site)** | [https://your-frontend-url.com](https://your-frontend-url.com) |
-| **Backend (API Base URL)**   | [https://your-backend-url.com](https://your-backend-url.com)   |
+| **Frontend (Deployed Site)** | [[https://your-frontend-url.com](https://heartfelt-truffle-c8e0a2.netlify.app/)]([https://your-frontend-url.com](https://heartfelt-truffle-c8e0a2.netlify.app/)) |
+| **Backend (API Base URL)**   | [[https://your-backend-url.com](https://cs195finalprojectbackend.onrender.com/)]([https://your-backend-url.com](https://cs195finalprojectbackend.onrender.com/))   |
 
 > Test these in an incognito window before submission.
 
@@ -40,9 +40,12 @@ I implemented a login feature to allow users to create an account and save their
 ---
 
 ## 📸 Screenshots
+Login page:
+<img width="865" height="718" alt="image" src="https://github.com/user-attachments/assets/c1e3e093-8591-4d53-bacf-372fcbe621f4" />
 
-> Include 2–4 screenshots of your app.
-> Use relative paths (e.g., `/screenshots/home.png`) or full URLs.
+Journal Page:
+<img width="1151" height="906" alt="image" src="https://github.com/user-attachments/assets/8b32f868-2a5a-4d0f-96d4-4254b888f752" />
+
 
 ---
 
@@ -99,7 +102,7 @@ cd your-project
 
 ### **2. Environment Variables**
 
-Include a `.env.example` file in both repos.
+Include a `.env` file in both repos.
 
 **Backend `.env.example`:**
 
@@ -182,8 +185,7 @@ Document where/how you deployed:
 ### **Backend**
 
 * Render / Railway
-* Note environment variable setup
-
+* Environment variable setup using .env file. For more information look in the environment variables section.
 
 ---
 
